@@ -1,0 +1,10 @@
+<!-- Indices written at Wed, 21 Apr 2010 23:38:02 UTC -->
+
+<datastore-indexes>
+
+    <!-- Used 3 times in query history -->
+    <datastore-index kind="Question" ancestor="true" source="auto">
+        <property name="m_Questions_INTEGER_IDX" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>
