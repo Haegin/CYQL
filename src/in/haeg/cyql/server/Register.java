@@ -8,14 +8,13 @@ import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class Register extends HttpServlet {
 
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    @SuppressWarnings("unchecked") public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String md5pass = MD5Sum.hash(req.getParameter("pass"));
         String md5pass2 = MD5Sum.hash(req.getParameter("pass-confirm"));
 

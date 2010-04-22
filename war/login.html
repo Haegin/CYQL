@@ -2,31 +2,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<link rel="stylesheet" type="text/css" href="CS_York_Query_Language.css" />
 <title>CS York Query Language</title>
 </head>
 <body>
 	<div id="content">
-    </div>
-    <div id="nav">
-        <div id="login-form">
-            <form action="/login" method="post">
-	            <label for="user">Username</label><input type="text" name="user"></input><br />
-	            <label for="pass">Password</label><input type="password" name="pass"></input><br />
-	            <input type="submit" value="Log In" name="login" /><br />
-            </form>
-        </div>
-        <div id="signup-form">
-            <form action="/register" method="post">
-	            <label for="user">CS Username</label><input type="text" name="user"></input><br />
-	            <label for="user">Email</label><input type="text" name="email"></input><br />
-	            <label for="user">Nickname</label><input type="text" name="nickname"></input><br />
-	            <label for="user">First Name</label><input type="text" name="first-name"></input><br />
-	            <label for="user">Last Name</label><input type="text" name="last-name"></input><br />
-	            <label for="pass">Password</label><input type="password" name="pass"></input><br />
-	            <label for="pass">Password</label><input type="password" name="pass-confirm"></input><br />
-	            <input type="submit" value="Register" name="register" /><br />
-            </form>
-        </div>
-    </div>
+	</div>
+	<div id="nav">
+		<form id="login-form" action="/login" method="post">
+			<fieldset>
+			<legend>Log In</legend>
+				<div><label for="login-user">Username</label><input id="login-user" type="text" name="user"></input></div>
+				<div><label for="login-pass">Password</label><input id="login-pass" type="password" name="pass"></input></div>
+				<div><input type="submit" value="Log In" name="login" /></div>
+			</fieldset>
+		</form>
+		<form id="signup-form" action="/register" method="post">
+			<fieldset>
+			<legend>Register a new account</legend>
+				<div><label for="register-user">CS Username</label><input id="register-user" type="text" name="user"></input><br /></div>
+				<div><label for="register-email">Email</label><input id="register-email" type="text" name="email"></input><br /></div>
+				<div><label for="register-nickname">Nickname</label><input id="register-nickname" type="text" name="nickname"></input><br /></div>
+				<div><label for="register-first-name">First Name</label><input id="register-first-name" type="text" name="first-name"></input></div>
+				<div><label for="register-last-name">Last Name</label><input id="register-last-name" type="text" name="last-name"></input></div>
+				<div><label for="register-pass">Password</label><input id="register-pass" type="password" name="pass"></input></div>
+				<div><label for="register-pass-confirm">Password</label><input id="register-pass-confirm" type="password" name="pass-confirm"></input></div>
+				<div><input type="submit" value="Register" name="register" /></div>
+			</fieldset>
+		</form>
+	</div>
 </body>
 </html>
