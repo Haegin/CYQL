@@ -1,0 +1,11 @@
+CYQL - CS York Query Language
+ - a Q&A website for University of York CS students
+
+This aims to become a question and answer website that facilitates CS students from the Universit y of York asking course related questions and getting helpful, constructive answers. It should tie in with the existing coursewiki to provide answers automatically where possible and to encourage other students to use and contribute to the wiki more.
+
+Current Status
+==============
+
+The project is fairly new and under active development. It is built on Google's App Engine and written in Java in a hopefully object oriented manner.
+
+Currently it has the core persistable classes written and the beginnings of a simplistict session based login/registration system.
