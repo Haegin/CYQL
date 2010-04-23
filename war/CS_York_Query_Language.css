@@ -7,8 +7,9 @@ form label {
 	line-height: 2em;
 }
 
-form input {
+form input, form textarea {
 	float: right;
+	clear: right;
 }
 
 #signup-form, #login-form {

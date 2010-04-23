@@ -102,4 +102,12 @@ import com.google.appengine.api.datastore.Key;
     public boolean isSolved() {
         return m_Solved;
     }
+
+	public void setAnswers(List<Answer> answers) {
+		m_Answers = answers;
+	}
+
+	public List<Answer> getAnswers() {
+		return m_Answers;
+	}
 }

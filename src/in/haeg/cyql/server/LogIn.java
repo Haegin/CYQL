@@ -8,10 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LogIn extends HttpServlet {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         LoginManager.login(req, req.getParameter("user"), req.getParameter("pass"));
         if (LoginManager.checkLogin(req)) {
-            resp.getOutputStream().println("Successfully logged in!");
+            resp.sendRedirect("index.jsp");
         } else {
             resp.getOutputStream().println("Failed to log in.");
         }
