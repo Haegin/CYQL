@@ -8,23 +8,24 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import com.google.appengine.api.datastore.Email;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 
-@PersistenceCapable public class User {
+@PersistenceCapable(detachable="true") public class User {
 
     @SuppressWarnings("unused") @PrimaryKey @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY) private Key m_UserID;
     @Persistent private String                                                                                    m_CSUserName;
     @Persistent private String                                                                                    m_FirstName;
     @Persistent private String                                                                                    m_LastName;
     @Persistent private String                                                                                    m_NickName;
-    @Persistent private String                                                                                    m_Email;
+    @Persistent private Email                                                                                    m_Email;
     @Persistent private String                                                                                    m_Password;
     @Persistent private Date                                                                                      m_JoinDate;
     @Persistent private Date                                                                                      m_CSJoinDate;
     @Persistent(mappedBy = "m_User") private List<Question>                                                       m_Questions;
 
-    public User(String a_CSUserName, String a_FirstName, String a_LastName, String a_NickName, String a_Email, String a_Password, Date a_JoinDate, Date a_CSJoinDate) {
+    public User(String a_CSUserName, String a_FirstName, String a_LastName, String a_NickName, Email a_Email, String a_Password, Date a_JoinDate, Date a_CSJoinDate) {
         setCSUserName(a_CSUserName);
         setFirstName(a_FirstName);
         setLastName(a_LastName);
@@ -68,11 +69,11 @@ import com.google.appengine.api.datastore.KeyFactory;
         m_NickName = a_NickName;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Email email) {
         m_Email = email;
     }
 
-    public String getEmail() {
+    public Email getEmail() {
         return m_Email;
     }
 
