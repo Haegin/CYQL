@@ -6,20 +6,13 @@
 <%@page import="in.haeg.cyql.shared.User"%>
 <%@page import="java.util.List"%>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<link rel="stylesheet" type="text/css" href="CS_York_Query_Language.css" />
-<title>CS York Query Language</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+	<link rel="stylesheet" type="text/css" href="CS_York_Query_Language.css" />
+	<title>CS York Query Language</title>
+    <%@ include file="includes/session.jsp" %>
 </head>
 <body>
-	<%
-	   boolean loggedIn = false;
-	   User user = null;
-	   if (session.getAttribute("user") != null) {
-		   user = (User)session.getAttribute("user");
-		   loggedIn = true;
-	   }
-	%>
-    <%@ include file="header.jsp" %>
+    <%@ include file="includes/header.jsp" %>
 	<div id="content">
 	   <table id="question-table">
 	       <tr><th>User</th><th>Question</th><th>Date</th></tr>
@@ -58,6 +51,7 @@
 	       <li>Joined Date: <%= user.getJoinDate() %></li>
 	       <li>Email: <%= user.getEmail() %></li>
 	   <% } %>
+	       <li><a href="logout.jsp">Log Out</a></li>
 	   </ul>
 	</div>
 </body>

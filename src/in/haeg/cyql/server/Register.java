@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.datastore.Email;
+
 public class Register extends HttpServlet {
 
     /**
@@ -25,15 +27,14 @@ public class Register extends HttpServlet {
 
         if (md5pass.equals(md5pass2)) {
             String csEmail = req.getParameter("user");
-            resp.getOutputStream().println("CS Email: " + csEmail);
             String nickname = req.getParameter("nickname");
-            String email = req.getParameter("email");
+            Email email = new Email(req.getParameter("email"));
             String firstname = req.getParameter("first-name");
             String lastname = req.getParameter("last-name");
             Date joinDate = new Date();
 
             PersistenceManager pm = PMF.get().getPersistenceManager();
-            String qryExistingUser = "select from " + User.class.getName() + " where m_Email == " + req.getParameter("user");
+            String qryExistingUser = "select from " + User.class.getName() + " where m_NickName == " + req.getParameter("user");
             List<User> users = (List<User>) pm.newQuery(qryExistingUser).execute();
             if (users.isEmpty()) {
                 User newUser = new User(csEmail, firstname, lastname, nickname, email, md5pass, joinDate, joinDate);

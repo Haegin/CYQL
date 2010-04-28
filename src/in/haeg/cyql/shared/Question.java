@@ -10,18 +10,19 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.Text;
 
 @PersistenceCapable public class Question {
 
     @PrimaryKey @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY) Key m_QuestionID;
     @Persistent private String                                                m_Question;
-    @Persistent private String                                                m_Explanation;
+    @Persistent private Text                                                m_Explanation;
     @Persistent private User                                                  m_User;
     @Persistent private Date                                                  m_AskedDate;
     @Persistent private boolean                                               m_Solved = false;
     @Persistent(mappedBy = "m_Question") private List<Answer>                 m_Answers;
 
-    public Question(String a_Question, String a_Explanation, User a_User) {
+    public Question(String a_Question, Text a_Explanation, User a_User) {
         setQuestion(a_Question);
         setExplanation(a_Explanation);
         setUser(a_User);
@@ -47,14 +48,14 @@ import com.google.appengine.api.datastore.Key;
      * @param explanation
      *            the explanation to set
      */
-    public void setExplanation(String explanation) {
+    public void setExplanation(Text explanation) {
         m_Explanation = explanation;
     }
 
     /**
      * @return the explanation
      */
-    public String getExplanation() {
+    public Text getExplanation() {
         return m_Explanation;
     }
 

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.datastore.Text;
+
 public class AddQuestion extends HttpServlet {
 
 	/**
@@ -20,7 +22,7 @@ public class AddQuestion extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
 		String question = req.getParameter("question");
-		String explanation = req.getParameter("explanation");
+		Text explanation = new Text(req.getParameter("explanation"));
 		User user = (User) req.getSession().getAttribute("user");
 		
         PersistenceManager pm = PMF.get().getPersistenceManager();

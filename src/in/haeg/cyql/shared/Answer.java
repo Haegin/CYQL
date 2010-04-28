@@ -9,6 +9,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.Text;
 
 @PersistenceCapable public class Answer {
 
@@ -16,6 +17,7 @@ import com.google.appengine.api.datastore.Key;
     @Persistent private Question                                              m_Question;
     @Persistent private User                                                  m_User;
     @Persistent private Date                                                  m_PostedDate;
+    @Persistent private Text m_Text;
     @Persistent private boolean                                               m_Accepted;
 
     /**
@@ -25,10 +27,11 @@ import com.google.appengine.api.datastore.Key;
      * @param a_PostedDate
      * @param a_Accepted
      */
-    public Answer(Question a_Question, User a_User, Date a_PostedDate, boolean a_Accepted) {
+    public Answer(Question a_Question, User a_User, Date a_PostedDate, Text a_Text, boolean a_Accepted) {
         setQuestion(a_Question);
         setUser(a_User);
         setPostedDate(a_PostedDate);
+        setText(a_Text);
         setAccepted(a_Accepted);
     }
 
@@ -77,7 +80,15 @@ import com.google.appengine.api.datastore.Key;
         return m_PostedDate;
     }
 
-    /**
+    public void setText(Text text) {
+		this.m_Text = text;
+	}
+
+	public Text getText() {
+		return m_Text;
+	}
+
+	/**
      * @param accepted
      *            the accepted to set
      */

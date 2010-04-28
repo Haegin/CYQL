@@ -13,7 +13,7 @@ public class LoginManager {
 
     @SuppressWarnings("unchecked") public static void login(HttpServletRequest req, String username, String password) {
         PersistenceManager pm = PMF.get().getPersistenceManager();
-        String qryUser = "select from " + User.class.getName() + " where m_Email == " + req.getParameter("user");
+        String qryUser = "select from " + User.class.getName() + " where m_NickName == " + req.getParameter("user");
         try {
             List<User> users = (List<User>) pm.newQuery(qryUser).execute();
             if (users.size() == 1) {
@@ -21,7 +21,8 @@ public class LoginManager {
                 if (user.getPassword().equals(MD5Sum.hash(req.getParameter("pass")))) {
                     // get the session object and set the user
                     HttpSession session = req.getSession();
-                    session.setAttribute("user", user);
+                    User detachedUser = pm.detachCopy(user);
+                    session.setAttribute("user", detachedUser);
                 }
             }
         } finally {
